@@ -10,7 +10,8 @@ public class DatabaseHandler {
     public void connectToDatabase() {
         try {
             Class.forName("com.mysql.jdbc.Driver");
-            connection = DriverManager.getConnection("jdbc:mysql://" + "atlas.dsv.su.se" + "/" + "db_20204492", "usr_20204492", "204492");
+            System.out.println(System.getenv("host"));
+            connection = DriverManager.getConnection("jdbc:mysql://" + System.getenv("host") + "/" + System.getenv("db"), System.getenv("db_user"), System.getenv("db_lösen"));
             System.out.println("Creating connection " + connection);
             statement = connection.createStatement();
         } catch (Exception e) {
